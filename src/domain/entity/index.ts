@@ -1,9 +1,9 @@
 import {
     IDrone,
-    makeDrone
+    makeCreateDrone
 } from './Drone'
 
 export {
     IDrone,
-    makeDrone
+    makeCreateDrone
 }

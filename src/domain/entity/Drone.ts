@@ -8,7 +8,7 @@ interface IDrone {
     state: string
 }
 
-const makeDrone = ({
+const makeCreateDrone = ({
     validateEntity
 }: ICreateEntity<IDrone>) => {
 
@@ -28,5 +28,5 @@ const makeDrone = ({
 
 export {
     IDrone,
-    makeDrone
+    makeCreateDrone
 }
