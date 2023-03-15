@@ -1,5 +1,5 @@
 import express from 'express'
-import router from '../routes/express'
+import router from '../routes'
 
 export const startExpressServer = () => {
     const PORT = process.env.PORT || 3000

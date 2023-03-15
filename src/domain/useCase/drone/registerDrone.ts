@@ -13,6 +13,7 @@ export const makeRegisterDrone = ({
     const registerDrone = (droneData: IDrone) => {
         const drone = createDrone(droneData)
         repository.insert(drone)
+        return drone
     }
 
     return registerDrone
