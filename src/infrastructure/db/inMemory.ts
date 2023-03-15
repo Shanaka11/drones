@@ -4,6 +4,6 @@ type db = {
     drone: IDrone[]
 }
 
-const dataBase:db = {
+export const dataBase:db = {
     drone: []
 }
