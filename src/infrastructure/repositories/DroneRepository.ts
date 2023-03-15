@@ -4,6 +4,7 @@ import { dataBase } from "../db"
 
 const insert = (drone: IDrone) => {
     dataBase.drone.push(drone)
+    return drone
 }
 
 const update = (drone: IDrone) => {
