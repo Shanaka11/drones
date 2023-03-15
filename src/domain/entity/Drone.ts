@@ -15,6 +15,7 @@ const makeCreateDrone = ({
     return (data:IDrone) => { 
         // ValidateEntity - 3rd Party Validator like zod
         validateEntity(data)
+        
         return {
             serialNumber: data.serialNumber,
             model: data.model,
