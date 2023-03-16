@@ -1,11 +1,27 @@
 import { ICreateEntity } from "./common"
 
+export enum eDroneModel {
+    'Lightweight' = 'Lightweight', 
+    'Middleweight' = 'Middleweight' , 
+    'Cruiserweight' = 'Cruiserweight', 
+    'Heavyweight' = 'Heavyweight'
+}
+
+export enum eDroneState {
+    'IDLE' = 'IDLE', 
+    'LOADING' = 'LOADING', 
+    'LOADED' = 'LOADED', 
+    'DELIVERING' = 'DELIVERING', 
+    'DELIVERED' = 'DELIVERED', 
+    'RETURNING' = 'RETURNING'
+}
+
 interface IDrone {
     serialNumber:string,
-    model: string,
+    model: eDroneModel,
     weightLimit: number,
     batteryCapacity: number,
-    state: string
+    state: eDroneState
 }
 
 const makeCreateDrone = ({

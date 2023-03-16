@@ -1,4 +1,5 @@
 import { Repository } from "../../../infrastructure/repositories"
+import { errorResponse } from "../../../infrastructure/validation"
 import { IDrone } from "../../entity"
 
 interface IMakeRegisterDrone {
@@ -12,6 +13,8 @@ export const makeRegisterDrone = ({
 }:IMakeRegisterDrone) => {
     const registerDrone = (droneData: IDrone) => {
         const drone = createDrone(droneData)
+        // Check if drone already exists before inserting it
+        if(repository.get(drone.serialNumber)) throw errorResponse(400, 'A drone with the same serial number already exists')
         repository.insert(drone)
         return drone
     }

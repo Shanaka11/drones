@@ -1,12 +1,14 @@
 import * as z from 'zod'
 import { IDrone } from '../../domain/entity'
+import { eDroneModel, eDroneState } from '../../domain/entity/Drone'
+import { errorResponse } from './errorResponse'
 
 const schema = z.object({
     serialNumber: z.string().max(100),
-    model: z.enum(['Lightweight', 'Middleweight', 'Cruiserweight', 'Heavyweight']),
+    model: z.nativeEnum(eDroneModel),
     weightLimit: z.number().min(0).max(500),
     batteryCapacity: z.number().min(0).max(100),
-    state: z.enum(['IDLE', 'LOADING', 'LOADED', 'DELIVERING', 'DELIVERED', 'RETURNING'])
+    state: z.nativeEnum(eDroneState)
 })
 
 export const validateDroneEntity = (data:IDrone) => {
@@ -16,8 +18,6 @@ export const validateDroneEntity = (data:IDrone) => {
         const errors = error.errors.map((item:any) => {
             return `${item.path} - ${item.message}`
         })
-        throw {
-            message: errors
-        }
+        throw errorResponse(400, errors)
     }
 }
