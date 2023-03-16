@@ -1,5 +1,6 @@
 import { Repository } from '../../../infrastructure/repositories'
 import { IDrone, makeCreateDrone } from '../../entity'
+import { makeCheckDroneBattery } from './checkDroneBattery'
 import { makeRegisterDrone } from './registerDrone'
 
 interface IMakeDroneApi {
@@ -21,8 +22,13 @@ const makeDroneApi = ({
         repository
     })
 
+    const checkDroneBattery = makeCheckDroneBattery({
+        repository
+    })
+
     return {
-        registerDrone
+        registerDrone,
+        checkDroneBattery
     }
 }
 

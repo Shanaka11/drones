@@ -1,4 +1,5 @@
 import droneRepository from "./DroneRepository";
+import medicationRepository from "./MedicationRepository";
 
 export type Repository<T> = {
     insert: (drone: T) => T;
@@ -8,5 +9,6 @@ export type Repository<T> = {
 }
 
 export {
-    droneRepository
+    droneRepository,
+    medicationRepository
 }

@@ -1,9 +1,14 @@
 import { Request, Response } from "express";
 import { IDrone } from "../../../domain/entity";
 
+
+interface IMakeRegisterDrone {
+    registerDrone : (droneData: IDrone) => IDrone
+}
+
 export const makeRegisterDroneController = ({
     registerDrone,
-}:any) => {
+}:IMakeRegisterDrone) => {
     return (req:Request<{}, {}, IDrone>, res:Response) => {
         try {
             const data = req.body
