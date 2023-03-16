@@ -1,9 +1,10 @@
 import { droneUseCases } from "../../../domain/useCase";
 import { droneRepository } from "../../repositories";
+import { validateDroneEntity } from "../../validation";
 import { makeRegisterDroneController } from "./registerDroneController";
 
 const droneApi = droneUseCases.makeDroneApi({
-    validateEntity: (data) => {},
+    validateEntity: validateDroneEntity,
     repository: droneRepository
 })
 
