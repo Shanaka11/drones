@@ -3,7 +3,14 @@ import {
     makeCreateDrone
 } from './Drone'
 
+import {
+    IMedication,
+    makeCreateMedication
+} from './Medication'
+
 export {
     IDrone,
-    makeCreateDrone
+    IMedication,
+    makeCreateDrone,
+    makeCreateMedication
 }

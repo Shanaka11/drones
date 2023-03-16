@@ -29,7 +29,7 @@ const makeCreateDrone = ({
 }: ICreateEntity<IDrone>) => {
 
     return (data:IDrone) => { 
-        // ValidateEntity - 3rd Party Validator like zod
+
         validateEntity(data)
         
         return {
