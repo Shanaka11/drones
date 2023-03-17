@@ -5,15 +5,15 @@ export const errorResponse = (
 
     if(Array.isArray(errors)){
         return {
+            status: status || 500,
             message: {
-                status : status || 500,
                 errors : errors
             }
         }
     }
     return {
+        status : status || 500,
         message: {
-            status : status || 500,
             errors: [ errors ]
         }
     }

@@ -3,8 +3,10 @@ import { IDrone } from '../../domain/entity'
 import { eDroneModel, eDroneState } from '../../domain/entity/Drone'
 import { errorResponse } from './errorResponse'
 
+export const zodSerialNumber = z.string().max(100)
+
 const schema = z.object({
-    serialNumber: z.string().max(100),
+    serialNumber: zodSerialNumber,
     model: z.nativeEnum(eDroneModel),
     weightLimit: z.number().min(0).max(500),
     batteryCapacity: z.number().min(0).max(100),

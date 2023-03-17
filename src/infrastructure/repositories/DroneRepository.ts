@@ -21,15 +21,21 @@ const remove = (serialNumber: string) => {
     return {}
 }
 
-const get = (serialNumber?: string) => {
+const get = (filter: Partial<IDrone>) : IDrone[] => {
 
-    if(serialNumber){
-        const index = dataBase.drone.findIndex( item => item.serialNumber === serialNumber )
-        if (index < 0) return
-        return dataBase.drone[index]
-    }
-    return dataBase.drone
+    const filteredData = dataBase.drone.filter((data) => 
+        //@ts-ignore
+        Object.entries(filter).every(([key, value]) => data[key] === value)
+    )
 
+    return filteredData
+    // if(serialNumber){
+    //     const index = dataBase.drone.findIndex( item => item.serialNumber === serialNumber )
+    //     if (index < 0) return
+    //     return dataBase.drone[index]
+    // }
+    // return dataBase.drone
+    return []
 }
 
 export default {

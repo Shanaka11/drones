@@ -15,7 +15,7 @@ export const makeRegisterDroneController = ({
             const drone = registerDrone(data)
             res.status(201).send(drone)
         }catch (error:any){
-            res.status(500).send(error.message)
+            res.status(error.status || 500).send(error.message)
         }
     }
 }

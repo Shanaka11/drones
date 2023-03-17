@@ -21,14 +21,20 @@ const remove = (code: string) => {
     return {}
 }
 
-const get = (code?: string) => {
+const get = (filter: Partial<IMedication>) : IMedication[] => {
 
-    if(code){
-        const index = dataBase.medication.findIndex( item => item.code === code )
-        if (index < 0) return
-        return dataBase.medication[index]
-    }
-    return dataBase.medication
+    const filteredData = dataBase.medication.filter((data) => 
+    //@ts-ignore
+        Object.entries(filter).every(([key, value]) => data[key] === value)
+    )
+
+    return filteredData
+    // if(code){
+    //     const index = dataBase.medication.findIndex( item => item.code === code )
+    //     if (index < 0) return
+    //     return dataBase.medication[index]
+    // }
+    // return dataBase.medication
 
 }
 
