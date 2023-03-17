@@ -9,5 +9,7 @@ router.route('/')
 router.route('/battery/:id')
 .get(droneController.checkDroneBatteryController)
 
+router.route('/load/:id')
+.get(droneController.checkLoadedMedicationForDroneController)
 
 export default router

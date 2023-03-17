@@ -50,13 +50,15 @@ export const dataBase:db = {
             "name": "Item_1",
             "weight": 10,
             "code": "ABCD_123",
-            "image": "https://example.com/image_1.jpg"
+            "image": "https://example.com/image_1.jpg",
+            "drone": "ABC123"
           },
           {
             "name": "Item_2",
             "weight": 20,
             "code": "EFGH_456",
-            "image": "https://example.com/image_2.jpg"
+            "image": "https://example.com/image_2.jpg",
+            "drone": "ABC123"
           },
           {
             "name": "Item_3",

@@ -22,7 +22,7 @@ export const makeLoadMedicationToDroneController = ({
     return (req:Request<{}, {}, { medicationCode: string, serialNumber:string}>, res:Response) => {
         try {
             const loadedDrone = loadMedicationToDrone(req.body)
-            res.status(200).send(loadedDrone)
+            res.status(201).send(loadedDrone)
         }catch (error:any){
             res.status(error.status || 500).send(error.message)
         }

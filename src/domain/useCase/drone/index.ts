@@ -1,16 +1,19 @@
 import { Repository } from '../../../infrastructure/repositories'
-import { IDrone, makeCreateDrone } from '../../entity'
+import { IDrone, IMedication, makeCreateDrone } from '../../entity'
 import { makeCheckDroneBattery } from './checkDroneBattery'
+import { makeCheckLoadedMedicationForDrones } from './checkLoadedMedicationForDrone'
 import { makeRegisterDrone } from './registerDrone'
 
 interface IMakeDroneApi {
     validateEntity: (data:IDrone) => void
     repository: Repository<IDrone> 
+    medicationRepository: Repository<IMedication>
 }
 
 const makeDroneApi = ({
     validateEntity,
-    repository
+    repository,
+    medicationRepository
 }:IMakeDroneApi) => {
 
     const createDrone = makeCreateDrone({
@@ -26,9 +29,15 @@ const makeDroneApi = ({
         repository
     })
 
+    const checkLoadedMedicationForDrone = makeCheckLoadedMedicationForDrones({
+        repository,
+        medicationRepository
+    })
+
     return {
         registerDrone,
-        checkDroneBattery
+        checkDroneBattery,
+        checkLoadedMedicationForDrone
     }
 }
 
