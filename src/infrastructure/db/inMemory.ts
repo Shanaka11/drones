@@ -48,7 +48,7 @@ export const dataBase:db = {
     medication: [
         {
             "name": "Item_1",
-            "weight": 10,
+            "weight": 200,
             "code": "ABCD_123",
             "image": "https://example.com/image_1.jpg",
             "drone": "ABC123"

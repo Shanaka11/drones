@@ -9,7 +9,7 @@ router.get('/healthcheck', (req, res) => {
     res.sendStatus(200)
 })
 
-router.use('/drone', droneRouter)
-router.use('/medication', medicationRouter)
+router.use('/drones', droneRouter)
+router.use('/medications', medicationRouter)
 
 export default router

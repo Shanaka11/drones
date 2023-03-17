@@ -1,5 +1,6 @@
 import { Repository } from '../../../infrastructure/repositories'
 import { IDrone, IMedication, makeCreateDrone } from '../../entity'
+import { makeCheckAvailableDronesForLoading } from './checkAvailableDronesForLoading'
 import { makeCheckDroneBattery } from './checkDroneBattery'
 import { makeCheckLoadedMedicationForDrones } from './checkLoadedMedicationForDrone'
 import { makeRegisterDrone } from './registerDrone'
@@ -34,10 +35,16 @@ const makeDroneApi = ({
         medicationRepository
     })
 
+    const checkAvailableDronesForLoading = makeCheckAvailableDronesForLoading({
+        repository,
+        medicationRepository
+    })
+
     return {
         registerDrone,
         checkDroneBattery,
-        checkLoadedMedicationForDrone
+        checkLoadedMedicationForDrone,
+        checkAvailableDronesForLoading
     }
 }
 

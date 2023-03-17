@@ -1,6 +1,7 @@
 import { droneUseCases } from "../../../domain/useCase";
 import { droneRepository, medicationRepository } from "../../repositories";
 import { validateDroneEntity } from "../../validation";
+import { makeCheckAvailableDronesForLoadingController } from "./checkAvailableDronesForLoadingController";
 import { makeCheckDroneBatteryController } from "./checkDroneBatteryController";
 import { makeCheckLoadedMedicationForDroneController } from "./checkLoadedMedicationForDroneController";
 import { makeRegisterDroneController } from "./registerDroneController";
@@ -23,8 +24,13 @@ const checkLoadedMedicationForDroneController = makeCheckLoadedMedicationForDron
     checkLoadedMedicationForDrone: droneApi.checkLoadedMedicationForDrone    
 })
 
+const checkAvailableDronesForLoadingController = makeCheckAvailableDronesForLoadingController({
+    checkAvailableDronesForLoading: droneApi.checkAvailableDronesForLoading
+})
+
 export default {
     registerDroneController,
     checkDroneBatteryController,
-    checkLoadedMedicationForDroneController
+    checkLoadedMedicationForDroneController,
+    checkAvailableDronesForLoadingController
 }
