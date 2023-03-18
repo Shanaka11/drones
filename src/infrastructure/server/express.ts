@@ -1,12 +1,14 @@
 import express from 'express'
+import helmet from 'helmet'
 import router from '../routes'
 
 export const startExpressServer = () => {
-    const PORT = process.env.PORT || 3000
+    const PORT = 3000
 
     const app = express()
     
     app.use(express.json())
+    app.use(helmet())
     
     // Add routes here
     app.use('/api/v1', router)
