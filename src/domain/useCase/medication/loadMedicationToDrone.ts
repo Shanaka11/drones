@@ -1,6 +1,8 @@
+import { medicationUtil } from "."
 import { Repository } from "../../../infrastructure/repositories"
 import { errorResponse } from "../../../infrastructure/validation"
 import { IDrone, IMedication } from "../../entity"
+import { droneUtil } from "../drone"
 
 interface IMakeLoadMedicationToDrone {
     repository: Repository<IMedication>,
@@ -35,11 +37,9 @@ export const makeLoadMedicationToDrone = ({
         })
 
         // Check if the drone is avaliable to be loaded
-        const loadedWeight = loadedMedication.reduce((acc, medication) => {
-            return acc + medication.weight;
-        }, 0);
+        const loadedWeight = medicationUtil.calculateTotalMedicationWeight(loadedMedication);
 
-        if(drone[0].weightLimit < loadedWeight + medication[0].weight) throw errorResponse(400, `Cannot load medication to drone, weight limit exceeds`)
+        if( droneUtil.isAboveWeightLimit(drone[0], loadedWeight + medication[0].weight)) throw errorResponse(400, `Cannot load medication to drone, weight limit exceeds`)
 
         // Load medication to the drone and return drone with loaded medication
         const selectedMedication = medication[0]

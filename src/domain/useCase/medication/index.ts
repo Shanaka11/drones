@@ -1,6 +1,7 @@
 import { Repository } from '../../../infrastructure/repositories'
 import { IDrone, IMedication } from '../../entity'
 import { makeLoadMedicationToDrone } from './loadMedicationToDrone'
+import medicationUtil from './utils'
 
 interface IMakeMedicationApi {
     validateEntity: (data:IMedication) => void
@@ -24,7 +25,9 @@ const makeMedicationApi = ({
     }
 }
 
-
+export {
+    medicationUtil
+}
 
 export default {
     makeMedicationApi

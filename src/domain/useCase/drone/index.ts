@@ -4,6 +4,7 @@ import { makeCheckAvailableDronesForLoading } from './checkAvailableDronesForLoa
 import { makeCheckDroneBattery } from './checkDroneBattery'
 import { makeCheckLoadedMedicationForDrones } from './checkLoadedMedicationForDrone'
 import { makeRegisterDrone } from './registerDrone'
+import droneUtil from './utils'
 
 interface IMakeDroneApi {
     validateEntity: (data:IDrone) => void
@@ -49,6 +50,9 @@ const makeDroneApi = ({
 }
 
 
+export {
+    droneUtil
+}
 
 export default {
     makeDroneApi

@@ -1,7 +1,9 @@
+import { droneUtil } from "."
 import { Repository } from "../../../infrastructure/repositories"
 import { errorResponse } from "../../../infrastructure/validation"
 import { IDrone, IMedication } from "../../entity"
 import { eDroneState } from "../../entity/Drone"
+import { medicationUtil } from "../medication"
 
 interface IMakeCheckAvalialbeDronesForLoading {
     repository: Repository<IDrone>
@@ -21,15 +23,13 @@ export const makeCheckAvailableDronesForLoading = ({
         // Check battery level and if their is room available in the drones
         const availableDrones = drones.filter( drone => {
             if(drone.batteryCapacity > 25){
-                const loadedWeight = medicationRepository.get({
+                const loadedWeight = medicationUtil.calculateTotalMedicationWeight(medicationRepository.get({
                     drone: drone.serialNumber
-                }).reduce((acc, medication) => {
-                    return acc + medication.weight;
-                }, 0)
+                }))
 
-                if(drone.weightLimit > loadedWeight) return true
+                if(droneUtil.isAboveWeightLimit(drone, loadedWeight)) return false
 
-                return false
+                return true
             }
             return false
         })
